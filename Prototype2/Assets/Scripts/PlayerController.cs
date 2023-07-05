@@ -26,14 +26,22 @@ public class PlayerController : MonoBehaviour
 
     private void Update()
     {
-        var x = _actions.Player.Move.ReadValue<Vector2>().x;
+        var direction = _actions.Player.Move.ReadValue<Vector2>();
+        var x = direction.x;
         if (transform.position.x < -15 && x < 0)
             return;
         
         if (transform.position.x > 15 && x > 0)
             return;
         
-        var movementDirection = new Vector3(x, 0f, 0f);
+        var y = direction.y;
+        if (transform.position.z < 0 && y < 0)
+            return;
+        
+        if (transform.position.z > 10 && y > 0)
+            return;
+        
+        var movementDirection = new Vector3(x, 0f, y);
         transform.Translate(movementDirection * (Time.deltaTime * movementSpeed));
     }
 }
