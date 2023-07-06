@@ -630,8 +630,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 2ad0e99d171acedf680f63b284fb068f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  movementSpeed: 20
-  projectile: {fileID: 4287977328035414475, guid: cced6a1e9b18493919f8ffe33e2a0384, type: 3}
+  _movementSpeed: 25
+  _projectile: {fileID: 4287977328035414475, guid: cced6a1e9b18493919f8ffe33e2a0384, type: 3}
 --- !u!54 &1286546682
 Rigidbody:
   m_ObjectHideFlags: 0
