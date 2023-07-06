@@ -3,8 +3,9 @@ using UnityEngine;
 public class GameManager
 {
     private static GameManager _instance;
-    private bool _isGameOver;
-    private int _score;
+    private bool _isGameOver = false;
+    private int _score = 0;
+    private int _livesCount = 3;
 
     private GameManager()
     {
@@ -19,13 +20,10 @@ public class GameManager
         }
     }
 
-    public bool IsGameOver => _isGameOver;
-    public int CurrentScore => _score;
-
     public void SetGameOver()
     {
         _isGameOver = true;
-        _score = 0;
+        _livesCount = 0;
         Debug.Log("Game Over");
     }
 
@@ -35,17 +33,15 @@ public class GameManager
             return;
         
         _score++;
-        Debug.Log($"Score increase to {_score}");
     }
 
-    public void DecreaseScore()
+    public void DecreaseLives()
     {
         if (_isGameOver)
             return;
         
-        _score--;
-        Debug.Log($"Score decreased to {_score}");
-        if(_score <= 0)
+        _livesCount--;
+        if(_livesCount <= 0)
             SetGameOver();
     }
 }

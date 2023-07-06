@@ -540,6 +540,7 @@ MonoBehaviour:
   minCoordinatesToSpawn: -14
   maxCoordinatesToSpawn: 14
   verticalSpawning: 1
+  spawnEvery: 5
 --- !u!4 &1065342726
 Transform:
   m_ObjectHideFlags: 0
@@ -699,6 +700,7 @@ MonoBehaviour:
   minCoordinatesToSpawn: 2
   maxCoordinatesToSpawn: 15
   verticalSpawning: 0
+  spawnEvery: 8
 --- !u!4 &1492015078
 Transform:
   m_ObjectHideFlags: 0
@@ -836,6 +838,7 @@ MonoBehaviour:
   minCoordinatesToSpawn: 2
   maxCoordinatesToSpawn: 15
   verticalSpawning: 0
+  spawnEvery: 8
 --- !u!4 &1843074315
 Transform:
   m_ObjectHideFlags: 0

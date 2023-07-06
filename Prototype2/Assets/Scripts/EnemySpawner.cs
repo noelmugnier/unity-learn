@@ -7,7 +7,7 @@ public class EnemySpawner : MonoBehaviour
     [SerializeField] private float minCoordinatesToSpawn;
     [SerializeField] private float maxCoordinatesToSpawn;
     [SerializeField] private bool verticalSpawning;
-    [SerializeField] private float spawnEvery = 2f;
+    [SerializeField] private float spawnEvery = 4f;
 
     private void Start()
     {

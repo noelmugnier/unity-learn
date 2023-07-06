@@ -4,9 +4,9 @@ using UnityEngine.InputSystem;
 
 public class PlayerController : MonoBehaviour
 {
-    [SerializeField] private float movementSpeed = 25f;
+    [SerializeField] private float _movementSpeed = 25f;
+    [SerializeField] private Transform _projectile;
     private PlayerInputActions _actions;
-    [SerializeField] private Transform projectile;
 
     private void Awake()
     {
@@ -16,7 +16,7 @@ public class PlayerController : MonoBehaviour
 
     private void Shoot(InputAction.CallbackContext obj)
     {
-        Instantiate(projectile, transform.position, projectile.rotation);
+        Instantiate(_projectile, transform.position, _projectile.rotation);
     }
 
     private void OnEnable()
@@ -31,7 +31,7 @@ public class PlayerController : MonoBehaviour
         direction = ConstraintVerticalMovement(direction);
 
         var movementDirection = new Vector3(direction.x, 0f, direction.y);
-        transform.Translate(movementDirection * (Time.deltaTime * movementSpeed));
+        transform.Translate(movementDirection * (Time.deltaTime * _movementSpeed));
     }
 
     private Vector2 ConstraintVerticalMovement(Vector2 direction)
@@ -56,5 +56,10 @@ public class PlayerController : MonoBehaviour
         };
 
         return direction;
+    }
+
+    public void CollideEnemy()
+    {
+        GameManager.Instance.DecreaseLives();
     }
 }

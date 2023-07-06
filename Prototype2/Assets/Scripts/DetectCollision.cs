@@ -4,15 +4,16 @@ public class DetectCollision : MonoBehaviour
 {
     private void OnTriggerEnter(Collider other)
     {
-        Destroy(gameObject);
-
-        if (other.GetComponent<PlayerController>() != null)
+        var playerController = other.GetComponent<PlayerController>();
+        if (playerController != null)
         {
-            GameManager.Instance.DecreaseScore();
+            playerController.CollideEnemy();
             return;
         }
+
+        var foodProvider = gameObject.GetComponent<FoodHunger>();
+        foodProvider.Feed();
         
-        GameManager.Instance.IncreaseScore();
         Destroy(other.gameObject);
     }
 }
