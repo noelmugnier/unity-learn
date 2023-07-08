@@ -57,9 +57,4 @@ public class PlayerController : MonoBehaviour
 
         return direction;
     }
-
-    public void CollideEnemy()
-    {
-        GameManager.Instance.DecreaseLives();
-    }
 }
