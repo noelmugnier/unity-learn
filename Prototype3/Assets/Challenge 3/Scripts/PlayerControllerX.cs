@@ -32,6 +32,12 @@ public class PlayerControllerX : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
+        if (transform.position.y >= 15)
+        {
+            transform.position = new Vector3(transform.position.x, 15, 0f);
+            _rigidBody.AddForce(Vector3.down * 5, ForceMode.Impulse);
+        }
+
         // While space is pressed and player is low enough, float up
         if (Input.GetKey(KeyCode.Space) && !gameOver)
         {
