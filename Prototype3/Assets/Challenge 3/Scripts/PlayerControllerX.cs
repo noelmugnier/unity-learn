@@ -1,6 +1,4 @@
-﻿using System.Collections;
-using System.Collections.Generic;
-using UnityEngine;
+﻿using UnityEngine;
 
 public class PlayerControllerX : MonoBehaviour
 {
@@ -16,6 +14,7 @@ public class PlayerControllerX : MonoBehaviour
 
     public AudioClip moneySound;
     public AudioClip explodeSound;
+    public AudioClip bumpSound;
 
 
     // Start is called before the first frame update
@@ -32,10 +31,19 @@ public class PlayerControllerX : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
+        if (gameOver)
+            return;
+        
         if (transform.position.y >= 15)
         {
-            transform.position = new Vector3(transform.position.x, 15, 0f);
             _rigidBody.AddForce(Vector3.down * 5, ForceMode.Impulse);
+            _audioSource.PlayOneShot(bumpSound, 1.0f);
+        }
+
+        if (transform.position.y <= 0)
+        {
+            _rigidBody.AddForce(Vector3.up * 5, ForceMode.Impulse);
+            _audioSource.PlayOneShot(bumpSound, 1.0f);
         }
 
         // While space is pressed and player is low enough, float up
