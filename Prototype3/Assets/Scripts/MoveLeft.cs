@@ -9,6 +9,6 @@ public class MoveLeft : MonoBehaviour
         if (GameManager.Instance.IsGameOver)
             return;
         
-        transform.Translate(Vector3.left * (Time.deltaTime * _moveSpeed));
+        transform.Translate(Vector3.left * (Time.deltaTime * _moveSpeed * GameManager.Instance.SpeedMultiplier));
     }
 }

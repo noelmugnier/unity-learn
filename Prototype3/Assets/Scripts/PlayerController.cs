@@ -71,7 +71,6 @@ public class PlayerController : MonoBehaviour
 
     private void Die()
     {
-        _actions.Disable();
         _animator.SetBool("Death_b", true);
         _animator.SetInteger("DeathType_int", 1);
         GameManager.Instance.SetGameOver();
