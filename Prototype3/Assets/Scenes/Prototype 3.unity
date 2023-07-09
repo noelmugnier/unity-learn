@@ -767,7 +767,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 69cb869ad52965733afe9d734c14a034, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _prefabToSpawn: {fileID: 1668904681294575270, guid: c734a3cf43224d8179006c0a71bb2aa0, type: 3}
+  _prefabsToSpawn:
+  - {fileID: 1668904681294575270, guid: c734a3cf43224d8179006c0a71bb2aa0, type: 3}
+  - {fileID: 2477412422807095530, guid: 86e1a637741bbaf5ea9cc0a741750d01, type: 3}
+  - {fileID: 3566296691656592734, guid: 4072634435447478ba06ae85a7b7f72a, type: 3}
+  - {fileID: 4769216350697008140, guid: 5464cce4cde51de14bf201a7ed28054f, type: 3}
   _spawnPosition: {x: 25, y: 0, z: 0}
 --- !u!4 &1251816686
 Transform:

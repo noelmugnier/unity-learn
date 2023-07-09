@@ -2,7 +2,7 @@ using UnityEngine;
 
 public class SpawnManager : MonoBehaviour
 {
-    [SerializeField] private GameObject _prefabToSpawn;
+    [SerializeField] private GameObject[] _prefabsToSpawn;
     [SerializeField] private Vector3 _spawnPosition = new (25f, 0f, 0f);
 
     private void Start()
@@ -15,7 +15,8 @@ public class SpawnManager : MonoBehaviour
         if (GameManager.Instance.IsGameOver)
             return;
 
-        Instantiate(_prefabToSpawn, _spawnPosition, _prefabToSpawn.transform.rotation);
+        var prefabToSpawn = _prefabsToSpawn[Random.Range(0, _prefabsToSpawn.Length)];
+        Instantiate(prefabToSpawn, _spawnPosition, prefabToSpawn.transform.rotation);
         Invoke(nameof(SpawnPrefab), Random.Range(1, 3));
     }
 }
