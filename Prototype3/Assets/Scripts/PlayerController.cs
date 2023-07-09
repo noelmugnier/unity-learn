@@ -15,6 +15,7 @@ public class PlayerController : MonoBehaviour
     private PlayerInput _actions;
     private bool _isOnGround = true;
     private Animator _animator;
+    private bool _isDoubleJumping;
 
     private void Awake()
     {
@@ -56,6 +57,7 @@ public class PlayerController : MonoBehaviour
     private void TouchGround()
     {
         _isOnGround = true;
+        _isDoubleJumping = false;
         _runningParticleEffect.Play();
     }
 
@@ -77,9 +79,17 @@ public class PlayerController : MonoBehaviour
 
     private void Jump(InputAction.CallbackContext obj)
     {
-        if (!_isOnGround || GameManager.Instance.IsGameOver) 
+        if (_isDoubleJumping || GameManager.Instance.IsGameOver)
             return;
-        
+
+        if (!_isOnGround)
+            _isDoubleJumping = true;
+
+        MakeJump();
+    }
+
+    private void MakeJump()
+    {
         _runningParticleEffect.Stop();
         _isOnGround = false;
         _rigidBody.AddForce(Vector3.up * _jumpForce, ForceMode.Impulse);
