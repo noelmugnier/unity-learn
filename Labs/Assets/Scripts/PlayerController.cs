@@ -31,6 +31,21 @@ public class PlayerController : MonoBehaviour
 
     private void Update()
     {
+        Move();
+        ConstrainPosition();
+    }
+
+    private void ConstrainPosition()
+    {
+        if (transform.position.z > _zBound)
+            transform.position = new(transform.position.x, transform.position.y, _zBound);
+
+        if (transform.position.z < -_zBound)
+            transform.position = new(transform.position.x, transform.position.y, -_zBound);
+    }
+
+    private void Move()
+    {
         var moveDirection = _input.Player.Move.ReadValue<Vector2>();
         _rigidBody.AddForce(_movementSpeed * new Vector3(moveDirection.x, 0f, moveDirection.y));
     }
